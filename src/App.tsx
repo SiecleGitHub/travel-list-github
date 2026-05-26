@@ -1,6 +1,7 @@
 import Form from './components/Form/Form';
 import Logo from './components/Logo/Logo';
 import PackingList from './components/PackingList/PackingList';
+import Stats from './components/Stats/Stats';
 
 export default function App() {
   return (
@@ -10,13 +11,5 @@ export default function App() {
       <PackingList />
       <Stats />
     </div>
-  );
-}
-
-function Stats() {
-  return (
-    <footer className="stats">
-      <em>You have X items on your list, and you already packed X (X%)</em>
-    </footer>
   );
 }
