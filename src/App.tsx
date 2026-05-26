@@ -1,5 +1,6 @@
 import Form from './components/Form/Form';
 import Logo from './components/Logo/Logo';
+import PackingList from './components/PackingList/PackingList';
 
 export default function App() {
   return (
@@ -10,10 +11,6 @@ export default function App() {
       <Stats />
     </div>
   );
-}
-
-function PackingList() {
-  return <div className="list">LIST</div>;
 }
 
 function Stats() {
