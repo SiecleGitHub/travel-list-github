@@ -5,7 +5,7 @@ import { ItemProps } from '../../types/ItemProps';
 const Item: React.FC<ItemProps> = ({ id, description, quantity, packed }) => {
   return (
     <li key={id}>
-      <span>
+      <span style={packed ? { textDecoration: 'line-through' } : {}}>
         {quantity} {description}
       </span>
       <button>❌</button>
