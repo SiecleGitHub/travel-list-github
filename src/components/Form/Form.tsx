@@ -1,8 +1,12 @@
 import './Form.css';
 
 const Form: React.FC = () => {
+  const handleEvent = (e: React.SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
   return (
-    <form className="add-form">
+    <form className="add-form" onSubmit={handleEvent}>
       <h3>What do you need for your 😍 trip?</h3>
       <select name="" id="">
         {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
