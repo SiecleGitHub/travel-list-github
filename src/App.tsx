@@ -1,3 +1,4 @@
+import Form from './components/Form/Form';
 import Logo from './components/Logo/Logo';
 
 export default function App() {
@@ -7,14 +8,6 @@ export default function App() {
       <Form />
       <PackingList />
       <Stats />
-    </div>
-  );
-}
-
-function Form() {
-  return (
-    <div className="add-form">
-      <h3>What do you need for your 😍 trip?</h3>
     </div>
   );
 }
