@@ -1,3 +1,5 @@
+import Logo from './components/Logo/Logo';
+
 export default function App() {
   return (
     <div className="app">
@@ -7,10 +9,6 @@ export default function App() {
       <Stats />
     </div>
   );
-}
-
-function Logo() {
-  return <h1>🏝️ Far Away 🧳</h1>;
 }
 
 function Form() {
