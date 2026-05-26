@@ -1,9 +1,15 @@
 import { useState } from 'react';
 import './Form.css';
+import { ItemProps } from '../../types/ItemProps';
 
 const Form: React.FC = () => {
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState(1);
+  const [items, setItems] = useState<ItemProps[]>([]);
+
+  const handleAddItem = (item: ItemProps) => {
+    setItems((items) => [...items, item]);
+  };
 
   const handleEvent = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -16,6 +22,8 @@ const Form: React.FC = () => {
       quantity,
       packed: false,
     };
+
+    handleAddItem(newItem);
 
     setDescription('');
     setQuantity(1);
