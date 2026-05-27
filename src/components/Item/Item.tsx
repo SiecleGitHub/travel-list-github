@@ -2,13 +2,17 @@ import './Item.css';
 
 import { ItemProps } from '../../types/ItemProps';
 
-const Item: React.FC<ItemProps> = ({ id, description, quantity, packed }) => {
+interface ItemComponentProps extends ItemProps {
+  onDeleteItem: (id: number) => void;
+}
+
+const Item: React.FC<ItemComponentProps> = ({ id, description, quantity, packed, onDeleteItem }) => {
   return (
     <li key={id}>
       <span style={packed ? { textDecoration: 'line-through' } : {}}>
         {quantity} {description}
       </span>
-      <button>❌</button>
+      <button onClick={() => onDeleteItem(id)}>❌</button>
     </li>
   );
 };
