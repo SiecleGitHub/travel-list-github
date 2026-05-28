@@ -14,6 +14,7 @@ const PackingList: React.FC<{ items: ItemProps[] }> = ({ items }) => {
             quantity={item.quantity}
             packed={item.packed}
             onDeleteItem={item.onDeleteItem}
+            onToggleItem={item.onToggleItem}
           />
         ))}
       </ul>

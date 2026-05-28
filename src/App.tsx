@@ -13,8 +13,12 @@ export default function App() {
     setItems((items) => items.filter((item) => item.id !== id));
   };
 
-  const handleAddItem = (item: Omit<ItemProps, 'onDeleteItem'>) => {
-    setItems((items) => [...items, { ...item, onDeleteItem: handleDeleteItem }]);
+  const handleAddItem = (item: Omit<ItemProps, 'onDeleteItem' | 'onToggleItem'>) => {
+    setItems((items) => [...items, { ...item, onDeleteItem: handleDeleteItem, onToggleItem: handleToggleItem }]);
+  };
+
+  const handleToggleItem = (id: number) => {
+    setItems((items) => items.map((item) => (item.id === id ? { ...item, packed: !item.packed } : item)));
   };
 
   return (

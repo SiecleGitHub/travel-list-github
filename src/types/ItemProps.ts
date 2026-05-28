@@ -4,4 +4,5 @@ export interface ItemProps {
   quantity: number;
   packed: boolean;
   onDeleteItem: (id: number) => void;
+  onToggleItem: (id: number) => void;
 }
