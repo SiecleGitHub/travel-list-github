@@ -3,4 +3,5 @@ export interface ItemProps {
   description: string;
   quantity: number;
   packed: boolean;
+  onDeleteItem?: (id: number) => void;
 }
