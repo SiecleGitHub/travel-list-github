@@ -2,7 +2,7 @@ import './PackingList.css';
 import { ItemProps } from '../../types/ItemProps';
 import Item from '../Item/Item';
 
-const PackingList: React.FC<{ items: ItemProps[]; onDeleteItem: (id: number) => void }> = ({ items, onDeleteItem }) => {
+const PackingList: React.FC<{ items: ItemProps[] }> = ({ items }) => {
   return (
     <div className="list">
       <ul>
@@ -13,7 +13,7 @@ const PackingList: React.FC<{ items: ItemProps[]; onDeleteItem: (id: number) => 
             description={item.description}
             quantity={item.quantity}
             packed={item.packed}
-            onDeleteItem={onDeleteItem}
+            onDeleteItem={item.onDeleteItem}
           />
         ))}
       </ul>

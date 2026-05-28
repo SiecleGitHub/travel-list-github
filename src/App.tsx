@@ -9,19 +9,19 @@ import { ItemProps } from './types/ItemProps';
 export default function App() {
   const [items, setItems] = useState<ItemProps[]>([]);
 
-  const handleAddItem = (item: ItemProps) => {
-    setItems((items) => [...items, item]);
-  };
-
   const handleDeleteItem = (id: number) => {
     setItems((items) => items.filter((item) => item.id !== id));
+  };
+
+  const handleAddItem = (item: Omit<ItemProps, 'onDeleteItem'>) => {
+    setItems((items) => [...items, { ...item, onDeleteItem: handleDeleteItem }]);
   };
 
   return (
     <div className="app">
       <Logo />
       <Form onAddItem={handleAddItem} />
-      <PackingList items={items} onDeleteItem={handleDeleteItem} />
+      <PackingList items={items} />
       <Stats />
     </div>
   );
