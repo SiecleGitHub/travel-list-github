@@ -1,19 +1,25 @@
-import { ItemProps } from '../../types/ItemProps';
+import { ItemModel } from '../../types/item-model';
 
-const Item: React.FC<ItemProps> = ({ id, description, quantity, packed, onDeleteItem, onToggleItem }) => {
+export interface ItemProps {
+  item: ItemModel;
+  onDeleteItem?: (id: number) => void;
+  onToggleItem?: (id: number) => void;
+}
+
+const Item: React.FC<ItemProps> = ({ item, onDeleteItem, onToggleItem }) => {
   return (
-    <li key={id}>
+    <li key={item.id}>
       <input
         type="checkbox"
-        checked={packed}
+        checked={item.packed}
         onChange={() => {
-          onToggleItem && onToggleItem(id);
+          onToggleItem && onToggleItem(item.id);
         }}
       />
-      <span style={packed ? { textDecoration: 'line-through' } : {}}>
-        {quantity} {description}
+      <span style={item.packed ? { textDecoration: 'line-through' } : {}}>
+        {item.quantity} {item.description}
       </span>
-      {onDeleteItem && <button onClick={() => onDeleteItem(id)}>❌</button>}
+      {onDeleteItem && <button onClick={() => onDeleteItem(item.id)}>❌</button>}
     </li>
   );
 };

@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import './Form.css';
-import { ItemProps } from '../../types/ItemProps';
+import { ItemModel } from '../../types/item-model';
 
-const Form: React.FC<{ onAddItem: (item: Omit<ItemProps, 'onDeleteItem' | 'onToggleItem'>) => void }> = ({
-  onAddItem,
-}) => {
+const Form: React.FC<{ onAddItem: (item: ItemModel) => void }> = ({ onAddItem }) => {
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState(1);
 

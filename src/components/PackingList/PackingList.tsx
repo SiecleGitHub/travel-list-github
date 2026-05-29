@@ -1,21 +1,19 @@
 import './PackingList.css';
-import { ItemProps } from '../../types/ItemProps';
+import { ItemModel } from '../../types/item-model';
 import Item from '../Item/Item';
 
-const PackingList: React.FC<{ items: ItemProps[] }> = ({ items }) => {
+export interface PackingListProps {
+  items: ItemModel[];
+  onDeleteItem: (id: number) => void;
+  onToggleItem: (id: number) => void;
+}
+
+const PackingList: React.FC<PackingListProps> = ({ items, onDeleteItem, onToggleItem }) => {
   return (
     <div className="list">
       <ul>
-        {items.map((item: ItemProps) => (
-          <Item
-            key={item.id}
-            id={item.id}
-            description={item.description}
-            quantity={item.quantity}
-            packed={item.packed}
-            onDeleteItem={item.onDeleteItem}
-            onToggleItem={item.onToggleItem}
-          />
+        {items.map((item: ItemModel) => (
+          <Item key={item.id} item={item} onDeleteItem={onDeleteItem} onToggleItem={onToggleItem} />
         ))}
       </ul>
     </div>

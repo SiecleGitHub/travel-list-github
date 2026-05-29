@@ -4,17 +4,17 @@ import PackingList from './components/PackingList/PackingList';
 import Stats from './components/Stats/Stats';
 import './App.css';
 import { useState } from 'react';
-import { ItemProps } from './types/ItemProps';
+import { ItemModel } from './types/item-model';
 
 export default function App() {
-  const [items, setItems] = useState<ItemProps[]>([]);
+  const [items, setItems] = useState<ItemModel[]>([]);
 
   const handleDeleteItem = (id: number) => {
     setItems((items) => items.filter((item) => item.id !== id));
   };
 
-  const handleAddItem = (item: Omit<ItemProps, 'onDeleteItem' | 'onToggleItem'>) => {
-    setItems((items) => [...items, { ...item, onDeleteItem: handleDeleteItem, onToggleItem: handleToggleItem }]);
+  const handleAddItem = (item: ItemModel) => {
+    setItems((items) => [...items, item]);
   };
 
   const handleToggleItem = (id: number) => {
@@ -25,7 +25,7 @@ export default function App() {
     <div className="app">
       <Logo />
       <Form onAddItem={handleAddItem} />
-      <PackingList items={items} />
+      <PackingList items={items} onDeleteItem={handleDeleteItem} onToggleItem={handleToggleItem} />
       <Stats />
     </div>
   );
