@@ -3,23 +3,10 @@ import Logo from './components/Logo/Logo';
 import PackingList from './components/PackingList/PackingList';
 import Stats from './components/Stats/Stats';
 import './App.css';
-import { useState } from 'react';
-import { ItemModel } from './types/item-model';
+import useItems from './hooks/useItems';
 
 export default function App() {
-  const [items, setItems] = useState<ItemModel[]>([]);
-
-  const handleDeleteItem = (id: number) => {
-    setItems((items) => items.filter((item) => item.id !== id));
-  };
-
-  const handleAddItem = (item: ItemModel) => {
-    setItems((items) => [...items, item]);
-  };
-
-  const handleToggleItem = (id: number) => {
-    setItems((items) => items.map((item) => (item.id === id ? { ...item, packed: !item.packed } : item)));
-  };
+  const { items, handleAddItem, handleDeleteItem, handleToggleItem } = useItems();
 
   return (
     <div className="app">
