@@ -13,6 +13,12 @@ const useItems = () => {
   const handleToggleItem = (id: number) => {
     setItems(items.map((item) => (item.id === id ? { ...item, packed: !item.packed } : item)));
   };
+  const handleClearList = () => {
+    const confirmed = window.confirm('Are you sure you want to clear the list?');
+    if (confirmed) {
+      setItems([]);
+    }
+  };
 
   // Return the State and all Methods as an object
   return {
@@ -20,6 +26,7 @@ const useItems = () => {
     handleAddItem,
     handleDeleteItem,
     handleToggleItem,
+    handleClearList,
   };
 };
 

@@ -7,9 +7,10 @@ export interface PackingListProps {
   items: ItemModel[];
   onDeleteItem: (id: number) => void;
   onToggleItem: (id: number) => void;
+  onClearList: () => void;
 }
 
-const PackingList: React.FC<PackingListProps> = ({ items, onDeleteItem, onToggleItem }) => {
+const PackingList: React.FC<PackingListProps> = ({ items, onDeleteItem, onToggleItem, onClearList }) => {
   const [sortBy, setSortBy] = useState('input');
 
   let sortedItems = items;
@@ -35,6 +36,7 @@ const PackingList: React.FC<PackingListProps> = ({ items, onDeleteItem, onToggle
           <option value="description">Sort by description</option>
           <option value="packed">Sort by packed status</option>
         </select>
+        <button onClick={onClearList}>Clear list</button>
       </div>
     </div>
   );

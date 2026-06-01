@@ -6,13 +6,18 @@ import './App.css';
 import useItems from './hooks/useItems';
 
 export default function App() {
-  const { items, handleAddItem, handleDeleteItem, handleToggleItem } = useItems();
+  const { items, handleAddItem, handleDeleteItem, handleToggleItem, handleClearList } = useItems();
 
   return (
     <div className="app">
       <Logo />
       <Form onAddItem={handleAddItem} />
-      <PackingList items={items} onDeleteItem={handleDeleteItem} onToggleItem={handleToggleItem} />
+      <PackingList
+        items={items}
+        onDeleteItem={handleDeleteItem}
+        onToggleItem={handleToggleItem}
+        onClearList={handleClearList}
+      />
       <Stats items={items} />
     </div>
   );
